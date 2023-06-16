@@ -1,0 +1,124 @@
+set laststatus=2
+set nu
+set cursorline
+syntax on
+set t_Co=256
+set autoindent
+set hlsearch
+set incsearch
+set nocompatible              " be iMproved, required
+filetype off                  " required
+map <F8> :n<CR>
+map <F7> :prev<CR>
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+			\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+			\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'eparreno/vim-l9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'reedes/vim-thematic'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'chriskempson/base16-vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
+
+" Plugin 'ervandew/supertab'
+" Plugin 'garbas/vim-snipmate'
+" Plugin 'marcweber/vim-addon-mw-utils'
+" Plugin 'tpope/vim-git'
+" Plugin 'wincent/Command-T'
+" Plugin 'sjl/gundo.vim'
+" Plugin 'fs111/pydoc.vim'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+let g:thematic#themes = {
+\ 'bubblegum'  : { 'typeface': 'Menlo',
+\                  'font-size': 18,
+\                  'transparency': 10,
+\                  'linespace': 2,
+\                },
+\ 'pencil_dark' :{ 'colorscheme': 'pencil',
+\                  'background': 'dark',
+\                  'airline-theme': 'badwolf',
+\                  'ruler': 1,
+\                  'laststatus': 0,
+\                  'typeface': 'Source Code Pro Light',
+\                  'font-size': 20,
+\                  'transparency': 10,
+\                  'linespace': 8,
+\                },
+\ 'pencil_lite' :{ 'colorscheme': 'pencil',
+\                  'background': 'light',
+\                  'airline-theme': 'light',
+\                  'laststatus': 0,
+\                  'ruler': 1,
+\                  'typeface': 'Source Code Pro',
+\                  'fullscreen': 1,
+\                  'transparency': 0,
+\                  'font-size': 20,
+\                  'linespace': 6,
+\                },
+\ 'base16' :{ 'colorscheme': 'base16-default',
+\		'background': 'dark',
+\		 },
+\ }
+
+
+set background=dark
+colorscheme solarized
+highlight NonText ctermbg=none
+highlight Normal ctermbg=none ctermfg=white
+highlight lineNr ctermbg=none
+highlight vimCommand ctermfg=white
+highlight Comment ctermfg=Green guifg=Green
+" highlight String ctermfg=Red guifg=Red
+" highlight Special ctermfg=Yellow
+" highlight PreProc ctermfg=LightBlue
+" highlight Constant ctermfg=Yellow
+let g:airline_theme ='badwolf'
+highlight Identifier ctermfg=Blue
