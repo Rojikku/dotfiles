@@ -1,0 +1,67 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+[user]
+label=☻ 
+command=echo "$USER"
+interval=once
+color=#268BD2
+
+[hostname]
+label=♥ 
+command=hostname
+interval=once
+color=#6F3BFF
+
+[cpu]
+label=■ 
+command=~/.i3scripts/cpu_usage
+interval=10
+color=#00A9B5
+T_WARN=70
+T_CRIT=95
+
+[memory]
+label=RAM 
+command=~/.i3scripts/memory
+interval=30
+color=#f12711
+
+[gpu_temp]
+label=GPU 
+command=~/.i3scripts/temperature
+interval=30
+color=#33CC99
+SENSOR_CHIP=amdgpu-pci-1100
+
+[cpu_temp]
+label=CPU 
+command=~/.i3scripts/temperature
+interval=30
+color=#33CC99
+SENSOR_CHIP=nct6798-isa-0290
+
+[uptime]
+label= 
+command=uptime -p
+interval=60
+color=#DC322F
+
+[volume]
+command=~/.i3scripts/volume-pulseaudio
+interval=persist
+DEFAULT_COLOR=#268BD2
+MUTED_COLOR=#00FF00
+LONG_FORMAT="${SYMB} ${VOL}%"
+AUDIO_MED_THRESH=40
+signal=1
+SUBSCRIBE=1
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
+color=#2FDC57

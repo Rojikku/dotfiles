@@ -1,0 +1,30 @@
+conky.config = {
+	background = false,
+	out_to_console = true,
+	out_to_x = false,
+	update_interval = 1,
+	total_run_times = 0,
+	short_units = true,
+	pad_percents = 3,
+}
+
+conky.text = [[
+[
+#Finds current volume. May need modified depending on your setup
+  {"full_text": " ♪ ${exec amixer get Master | grep -o "\[.*%\]" -m 1} ", "color":"\#268BD2"},
+#Shows current user
+  {"full_text": " ☻ [${exec whoami}] ", "color":"\#ff00f3"},
+#Shows hostname (heart for lack of better symbol)
+  {"full_text": " ♥ [${exec hostname}] ", "color":"\#6F3BFF"},
+#Shows current memory usage
+  {"full_text": " RAM [$memperc%/$mem] ", "color":"\#B58900"},
+#Shows current CPU usage with a bar
+  {"full_text": " ■ [$cpu%] ", "color":"\#00A9B5"},
+#GPU Temperature
+#  {"full_text": " GPU  ≈ [${exec nvidia-settings -q gpucoretemp -t| head -n 1}°C] ","color":"\#33CC99"},
+#Shows uptime
+  {"full_text": " UP [${uptime}] ","color": "\#dc322f"},
+#Shows time
+  {"full_text": " [${time %a %d %b} ${time %T}] ","color": "\#2fdc57"}
+],
+]]
