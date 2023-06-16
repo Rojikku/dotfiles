@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
+
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+# exec gnome-session
+# exec startkde
+# exec startxfce4
+# ...or the Window Manager of your choice
+
+session=${1:i3}
+
+case $session in
+i3|i3wm    ) exec i3;;
+xfce|xfce4 ) exec startxfce4;;
+#On null
+*) exec i3;;
+esac
+
+#exec i3
