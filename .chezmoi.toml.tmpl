@@ -1,0 +1,4 @@
+encryption = "age"
+[age]
+    identity = "/home/{{ .chezmoi.username }}/.config/sops/age/chezmoi.txt "
+    recipient = "{{ (bitwarden "item" "chezmoi sops key").login.password }}"
