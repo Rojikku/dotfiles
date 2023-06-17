@@ -1,0 +1,25 @@
+#Ignore games
+.steam
+.local/share/Steam
+.local/share/PolyMC
+.local/share/lutris
+.local/share/Paradox Interactive
+.factorio
+.config/EgoSoft
+.wine
+.proton
+.mono
+.mozilla
+BitBurner
+
+#Ignore caches
+.local/share/containers
+.cache
+.jd
+k3sbackup
+Cache
+abs
+drive
+GITS
+Android
+.gimp-2.8

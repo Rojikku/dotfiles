@@ -1,0 +1,29 @@
+version: "1"
+
+default:
+  repository: "sftp:k8s@nas:/Backup/b/Sintax"
+  password-file: "{{ .ConfigDir }}/{{ .Profile.Name }}-key"
+
+  backup:
+    verbose: true
+    source:
+      - "/home/rojikku"
+    exclude-file:
+      - "{{ .ConfigDir }}/restic-exclude.txt"
+    exclude-caches: true
+    schedule: "*:00,30"
+    schedule-priority: background
+    schedule-lock-mode: default
+    schedule-lock-wait: 15m30s
+  
+  retention:
+    after-backup: true
+    before-backup: false
+    compact: false
+    keep-within: 1d
+    keep-hourly: 36
+    keep-daily: 14
+    keep-weekly: 16
+    keep-monthly: 9
+    keep-yearly: 4
+    prune: true
