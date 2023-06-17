@@ -1,0 +1,10 @@
+Host localhost
+	ForwardAgent yes
+Host aur.archlinux.org
+	IdentityFile ~/.ssh/aur
+	User aur
+Host nas
+	Hostname 172.16.0.54
+	IdentityFile ~/.ssh/NAS/ed25519
+	User k8s
+	Port 2212

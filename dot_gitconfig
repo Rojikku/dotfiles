@@ -1,0 +1,12 @@
+[user]
+	email = Rojikku@users.noreply.github.com
+	name = Rojikku
+	signingKey = 7C1E63EED4DAE3ADE102C9E75CF12FC89E244966
+[core]
+	editor = code --wait
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
