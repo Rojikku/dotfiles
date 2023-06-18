@@ -3,8 +3,9 @@ LICENSE
 install.sh
 {{- if .codespaces }} # Don't manage these in codespaces
 .config/*
-!.config/omf/*
-!.config/fish/*
+!.config/omf
+!.config/fish
+.config/fish/conf.d/virtual*
 .i3scripts
 .ssh
 .conkyrc
