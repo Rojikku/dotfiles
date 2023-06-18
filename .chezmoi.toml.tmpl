@@ -1,11 +1,16 @@
 {{- $codespaces:= env "CODESPACES" | not | not -}}
+{{- $remote_containers:= env "REMOTE_CONTAINERS" | not | not -}}
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 encryption = "age"
 
 [data]
     name = "Rojikku"
+{{- if $codespaces }}
     codespaces = {{ $codespaces }}
-{{- if (and (eq .chezmoi.os "linux") (not $codespaces)) }}
+{{- else }}
+    codespaces = {{ $remote_containers }}
+{{- end }}
+{{- if (and (eq .chezmoi.os "linux") (not (or $codespaces $dev_containers))) }}
 [age]
     identity = "/home/{{ .chezmoi.username }}/.config/sops/age/chezmoi.txt"
     recipient = "{{ (bitwarden "item" "chezmoi sops key").login.password }}"
