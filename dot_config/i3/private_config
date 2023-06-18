@@ -18,7 +18,6 @@ exec --no-startup-id uim-xim
 exec --no-startup-id uim-toolbar-gtk-systray
 #exec --no-startup-id xautolock -locker 'i3lock -i ~/Pictures/Lock.png -c 000000' -time 10 -notify 30
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec --no-startup-id autokey-gtk
 
 #Networking Tray Icons
 exec --no-startup-id firewall-applet
@@ -45,8 +44,8 @@ assign [class="Civ5XP"] 0
 assign [class="wine"] 0
 assign [class="WineDesktop"] 0
 assign [class="wineserver"] 0
-assign [class="discord"] Gajim
-assign [class="electron"] Gajim
+assign [class="discord"] Discord
+assign [class="electron"] Discord
 
 set $left HDMI-A-0
 set $right HDMI-A-1
@@ -58,7 +57,7 @@ workspace 2 output $center
 workspace 3 output $center
 workspace 4 output $center
 workspace 9 output $right
-workspace "Gajim" output $right
+workspace "Discord" output $right
 
 # Custom hotkeys
 bindsym $mod+s exec "thunar"
@@ -186,7 +185,7 @@ bindsym $mod+a focus parent
 # bindsym $mod+8 workspace 8
 # bindsym $mod+9 workspace 9
 # bindsym $mod+0 workspace 0
-bindsym $mod+g workspace Gajim
+bindsym $mod+g workspace Discord
 bindsym $mod+o workspace OBS
 bindsym $mod+t workspace Terminal
 bindsym $mod+b workspace qBittorrent
@@ -215,7 +214,7 @@ bindsym $mod+0 exec $wk go 0
 # bindsym $mod+Shift+8 move container to workspace 8
 # bindsym $mod+Shift+9 move container to workspace 9
 # bindsym $mod+Shift+0 move container to workspace 0
-bindsym $mod+Shift+g move container to workspace Gajim
+bindsym $mod+Shift+g move container to workspace Discord
 bindsym $mod+Shift+o move container to workspace OBS
 bindsym $mod+Shift+t move container to workspace Terminal
 bindsym $mod+Shift+b move container to workspace qBittorrent
