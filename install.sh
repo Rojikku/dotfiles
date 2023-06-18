@@ -25,7 +25,11 @@ script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
 
 set -- init --apply --source="${script_dir}"
 
+# Download fish
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > /home/vscode/install
+# Install vundle
+ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 echo "Running 'chezmoi $*'" >&2
 # exec: replace current process with chezmoi
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > /home/vscode/install
 exec "$chezmoi" "$@"
