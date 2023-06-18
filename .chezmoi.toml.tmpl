@@ -1,8 +1,11 @@
 {{- $codespaces:= env "CODESPACES" | not | not -}}
 sourceDir = {{ .chezmoi.sourceDir | quote }}
-
-{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
 encryption = "age"
+
+[data]
+    name = "Rojikku"
+    codespaces = {{ $codespaces }}
+{{- if (and (eq .chezmoi.os "linux") (not $codespaces)) }}
 [age]
     identity = "/home/{{ .chezmoi.username }}/.config/sops/age/chezmoi.txt"
     recipient = "{{ (bitwarden "item" "chezmoi sops key").login.password }}"

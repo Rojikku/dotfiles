@@ -1,10 +1,11 @@
 # Env Variables
 set -U budspencer_nogreeting
-{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
+{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) }}
 set -Ux RESTIC_PASSWORD "{{ (bitwarden "item" "Restic Password").login.password }}"
 set -Ux SOPS_AGE_KEY_FILE "/home/rojikku/.config/sops/age/keys.txt"
 set -Ux ANDROID_SDK_ROOT "$HOME/Android/Sdk"
-{{- end -}}
+{{ end -}}
+
 set -Ux PYENV_ROOT $HOME/.pyenv
 
 # Paths
@@ -12,13 +13,13 @@ fish_add_path $HOME/.jenv/bin
 fish_add_path $PYENV_ROOT/bin
 
 # Aliases
-{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
+{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) }}
 alias fixmirrors="sudo reflector -c US,CA --connection-timeout 4 --download-timeout 3 --protocol https,rsync --age 1 --sort rate --number 350 --fastest 50 --threads 32 --save /etc/pacman.d/mirrorlist;sudo rm -f /etc/pacman.d/mirrorlist.pacnew"
-{{- end -}}
+{{- end }}
 alias k="kubectl"
 
 # Load Stuff
-{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
+{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) }}
 bass source /usr/share/nvm/init-nvm.sh
 status --is-interactive; and jenv init - | source
-{{- end -}}
+{{- end }}

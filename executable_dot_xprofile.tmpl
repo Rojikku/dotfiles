@@ -2,15 +2,15 @@
 export GTK_IM_MODULE='uim'
 export QT_IM_MODULE='uim'
 export XMODIFIERS='@im=uim'
-{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) -}}
+{{- if (and (eq .chezmoi.os "linux") (not .codespaces)) }}
 export GOOGLE_API_KEY='{{ (bitwardenFields "item" "Google OAUTH").GOOGLE_API_KEY.value }}'
 export GOOGLE_DEFAULT_CLIENT_ID='{{ (bitwardenFields "item" "Google OAUTH").GOOGLE_DEFAULT_CLIENT_ID.value }}'
 export GOOGLE_DEFAULT_CLIENT_SECRET='{{ (bitwardenFields "item" "Google OAUTH").GOOGLE_DEFAULT_CLIENT_SECRET.value }}'
 export STEAM_FORCE_DESKTOPUI_SCALING=1.9
 {{- end -}}
-{{- if (and (eq .chezmoi.os "linux") (not .codespaces) (eq .chezmoi.hostname "Sintax")) -}}
+{{- if (and (eq .chezmoi.os "linux") (not .codespaces) (eq .chezmoi.hostname "Sintax")) }}
 xrandr --output DisplayPort-0 --off \
 	--output DisplayPort-1 --primary --mode 3840x2160 --pos 3840x0 --rate 60 --rotate normal --scale 1x1 \
 	--output HDMI-A-0 --mode 1920x1080 --pos 0x0 --rotate normal --scale 2x2 \
 	--output HDMI-A-1 --mode 1920x1080 --pos 7680x0 --rotate normal --scale 2x2
-{{- end -}}
+{{- end }}
