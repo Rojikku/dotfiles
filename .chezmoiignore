@@ -12,5 +12,5 @@ install.sh
 .X*
 # But do manage these
 !.config/fish/*
-!.config/omf
+!.config/omf/*
 {{- end }}
