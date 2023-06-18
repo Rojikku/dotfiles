@@ -1,3 +1,15 @@
 README.md
 LICENSE
 install.sh
+{{- if ( .codespaces)) -}} # Don't manage these in codespaces
+.config/*
+.i3scripts
+.ssh
+.conkyrc
+.gitconfig
+.rconkyrc
+.x*
+.X*
+# But do manage these
+!.config/fish/*
+{{- end }}
