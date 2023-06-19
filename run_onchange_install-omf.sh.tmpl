@@ -1,5 +1,6 @@
 {{ if .codespaces -}}
 #!/usr/bin/env bash
 # Download fish
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > /tmp/omf-install
+fish -c "/tmp/omf-install install --noninteractive"
 {{ end -}}
