@@ -1,0 +1,7 @@
+{{ if .codespaces -}}
+#!/usr/bin/env sh
+# Download fish
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | sh -s -- "--noninteractive"
+# Install
+/usr/bin/env fish -c "omf install"
+{{ end -}}
