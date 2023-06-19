@@ -26,7 +26,8 @@ script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
 set -- init --apply --source="${script_dir}"
 
 # Download fish
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > /home/vscode/install
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish &
+
 # Install vundle
  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
