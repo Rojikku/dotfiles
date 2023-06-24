@@ -5,6 +5,7 @@ install.sh
 .config/*
 !.config/omf
 !.config/fish
+.config/fish/conf.d/fish-ssh-agent.fish
 .config/fish/conf.d/virtual*
 .i3scripts
 .ssh
