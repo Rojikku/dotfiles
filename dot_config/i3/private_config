@@ -5,26 +5,34 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-#Start on boot
+# Start on boot
+
+# Keyboard
 exec --no-startup-id numlockx on
 exec --no-startup-id xbindkeys
 exec --no-startup-id xfce4-clipman
-exec --no-startup-id "feh --randomize --bg-fill ~/Pictures/Watched/*"
+
+# Services
 exec --no-startup-id picom -b
 exec --no-startup-id conky
+exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
+#exec --no-startup-id xautolock -locker 'i3lock -i ~/Pictures/Lock.png -c 000000' -time 10 -notify 30
+
+# Icons
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pasystray
 exec --no-startup-id uim-xim
 exec --no-startup-id uim-toolbar-gtk-systray
-#exec --no-startup-id xautolock -locker 'i3lock -i ~/Pictures/Lock.png -c 000000' -time 10 -notify 30
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-#Networking Tray Icons
+# Background
+exec --no-startup-id "feh --randomize --bg-fill ~/Pictures/Watched/*"
+
+# Networking Tray Icons
 exec --no-startup-id firewall-applet
 exec --no-startup-id nm-applet
 
 
-#Customs
+# Custom keybinds
 #Move to last workspace
 bindsym $mod+z workspace back_and_forth
 
