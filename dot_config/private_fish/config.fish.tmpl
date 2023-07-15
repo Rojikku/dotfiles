@@ -14,7 +14,7 @@ fish_add_path $PYENV_ROOT/bin
 
 # Aliases
 {{- if (and (eq .chezmoi.os "linux") (not .codespaces)) }}
-alias fixmirrors="sudo reflector -c US,CA --connection-timeout 4 --download-timeout 3 --protocol https,rsync --age 1 --sort rate --number 350 --fastest 50 --threads 32 --save /etc/pacman.d/mirrorlist;sudo rm -f /etc/pacman.d/mirrorlist.pacnew"
+alias fixmirrors="sudo reflector -c US,CA --connection-timeout 4 --download-timeout 3 --protocol https,rsync --age 12 --sort rate --number 350 --fastest 50 --threads 32 --save /etc/pacman.d/mirrorlist;sudo rm -f /etc/pacman.d/mirrorlist.pacnew"
 {{- end }}
 alias k="kubectl"
 
