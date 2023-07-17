@@ -55,9 +55,9 @@ assign [class="wineserver"] 0
 assign [class="discord"] Discord
 assign [class="electron"] Discord
 
-set $left HDMI-A-0
+set $left DisplayPort-1
 set $right HDMI-A-1
-set $center DisplayPort-1
+set $center DisplayPort-0
 
 #Monitor Binds
 workspace 1 output $left
@@ -312,7 +312,7 @@ bar {
 	urgent_workspace   #ff0000 #990000 #007fff
 	}
 
-	tray_output HDMI-A-0
+	tray_output DisplayPort-1
 	font pango: DejaVu Sans Mono Nerd Font 10
 	separator_symbol " | "
         status_command i3blocks
