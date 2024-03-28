@@ -10,12 +10,18 @@ summary = argv[2]
 body = argv[3]
 command = "wmctrl -r {} -b add,demands_attention".format(appname) # Set demands attention status on calling window
 
+# Debug
+print("Appname: {}\nSummary: {}\nBody: {}".format(appname, summary, body))
+
 def discord():
     mute = re.compile('.*muted', re.IGNORECASE)
     deaf = re.compile('.*deafen', re.IGNORECASE)
     move = re.compile('[A-za-z]+ (joined|left) .*')
     avrae = re.compile('.*Avrae.*')
-    sonarr = re.compile('Sonarr.*')
+    sonarr = re.compile('.*Sonarr.*')
+    github = re.compile('.*GitHub.*')
+    flux = re.compile('.*Flux.*')
+    pro = re.compile('.*Prometheus.*')
     exclamation = re.compile('^!.*')
 
     if mute.match(summary) and body == '': # Ignore mutes
@@ -34,7 +40,16 @@ def discord():
         print("Ignoring !command")
         pass
     elif sonarr.match(summary): # Ignore Sonarr notifs
-        print("Ignoring sonarr")
+        print("Ignoring Sonarr")
+        pass
+    elif github.match(summary):
+        print ("Ignoring GitHub")
+        pass
+    elif flux.match(summary):
+        print ("Ignoring Flux")
+        pass
+    elif pro.match(summary):
+        print ("Ignoring Prometheus")
         pass
     else:
         print("Notifying for: {}".format(summary))
