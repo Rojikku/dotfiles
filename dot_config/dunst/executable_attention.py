@@ -11,7 +11,7 @@ body = argv[3]
 command = "wmctrl -r {} -b add,demands_attention".format(appname) # Set demands attention status on calling window
 
 # Debug
-print("Appname: {}\nSummary: {}\nBody: {}".format(appname, summary, body))
+# print("Appname: {}\nSummary: {}\nBody: {}".format(appname, summary, body))
 
 def discord():
     mute = re.compile('.*muted', re.IGNORECASE)
