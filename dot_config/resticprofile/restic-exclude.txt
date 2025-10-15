@@ -4,11 +4,23 @@
 .local/share/PolyMC
 .local/share/lutris
 .local/share/Paradox Interactive
+.config/Kalypso Media
+.config/protonfixes
+.config/Increlution
+.config/weakauras-companion
+.config/ShaderCache
+.config/Epic
+.config/ABarthel
 .paradoxlauncher
 .factorio
 .config/EgoSoft
 .config/r2modmanPlus-local
 .config/unity3d
+.local/share/7DaysToDie
+.local/share/Kalypso Media
+Larian Studios
+.Unrailed
+.avorion
 .smiteworks
 .wine
 .proton
@@ -24,14 +36,26 @@ Zomboid
 .local/share/Trash
 .local/share/waydroid
 .local/share/bottles/runners
+.local/share/bottles/temp
+.local/share/TabNine
+.minikube/cache
 .local/share/marble
 .local/share/virtualenv
 .local/share/Anki2
 .local/state
 .local/pipx
 .kube/cache
+.config/chromium
+.xsession-errors
+.config/google-chrome
+.config/Code/CachedExtensionVSIXs
+.config/Code/CachedData
+.config/VirtualBox
+.android/avd
+.floorp/*.defaul*/storage
 .ansible
 .var
+.config/discord/0.*
 .virtualenvs
 .vscode
 go
