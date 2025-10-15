@@ -11,6 +11,7 @@
 exec --no-startup-id numlockx on
 exec --no-startup-id xbindkeys
 exec --no-startup-id xfce4-clipman
+exec --no-startup-id imwheel -b "45"
 
 # Services
 exec --no-startup-id picom -b
@@ -20,9 +21,9 @@ exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 
 # Icons
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pasystray
-exec --no-startup-id uim-xim
-exec --no-startup-id uim-toolbar-gtk-systray
+# exec --no-startup-id pasystray
+# exec --no-startup-id uim-xim
+# exec --no-startup-id uim-toolbar-gtk-systray
 
 # Background
 exec --no-startup-id "feh --randomize --bg-fill ~/Pictures/Watched/*"
@@ -44,9 +45,11 @@ for_window [class="Civ5XP"] floating disable
 #  for_window [class="EVE"] floating enable
 for_window [class="pobfrontend"] floating enable
 #  for_window [class="EVE"] fullscreen disable
+for_window [class="Burrito"] floating enable
 
 #Workspace Program Association
 assign [class="Steam"] 2
+assign [class="Burrito"] 2
 assign [class="Liferea"] 3
 assign [class="Civ5XP"] 0
 assign [class="wine"] 0
@@ -55,9 +58,9 @@ assign [class="wineserver"] 0
 assign [class="discord"] Discord
 assign [class="electron"] Discord
 
-set $left DisplayPort-1
-set $right HDMI-A-1
-set $center DisplayPort-0
+set $left DisplayPort-2
+set $right DisplayPort-0
+set $center DisplayPort-1
 
 #Monitor Binds
 workspace 1 output $left
@@ -71,6 +74,7 @@ workspace "Discord" output $right
 bindsym $mod+s exec "thunar"
 bindsym $c+$mod+p exec "puush -c -w"
 bindsym $mod+Shift+s exec "xfce4-screenshooter -c -r"
+bindsym $mod+$c+Shift+s exec "xfce4-screenshooter -c -w"
 
 #Media Custom Hotkeys
 bindsym $mod+p exec "mpc toggle"
@@ -196,7 +200,7 @@ bindsym $mod+a focus parent
 bindsym $mod+g workspace Discord
 bindsym $mod+o workspace OBS
 bindsym $mod+t workspace Terminal
-bindsym $mod+b workspace qBittorrent
+bindsym $mod+b workspace Music
 
 bindsym $mod+1 exec $wk go 1
 bindsym $mod+2 exec $wk go 2
@@ -225,7 +229,7 @@ bindsym $mod+0 exec $wk go 0
 bindsym $mod+Shift+g move container to workspace Discord
 bindsym $mod+Shift+o move container to workspace OBS
 bindsym $mod+Shift+t move container to workspace Terminal
-bindsym $mod+Shift+b move container to workspace qBittorrent
+bindsym $mod+Shift+b move container to workspace Music
 
 bindsym $mod+Shift+1 exec $wk move 1
 bindsym $mod+Shift+2 exec $wk move 2
@@ -246,7 +250,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+$c+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+$c+s exec "i3-nagbar -t warning -m 'You pressed the shutdown shortcut. Do you really want to shutdown?' -b 'Yes, shutdown' 'shutdown now'"
+# bindsym $mod+Shift+$c+s exec "i3-nagbar -t warning -m 'You pressed the shutdown shortcut. Do you really want to shutdown?' -b 'Yes, shutdown' 'shutdown now'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -281,24 +285,6 @@ client.focused		#000000	#000000	#007fff	#2e9ef4
 client.focused_inactive	#000000 #333333 #004fff #2e9ef4
 client.unfocused	#000000	#222222	#666666 #2e8ef4
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#     colors {
-# 	#Whole color settings
-# 	background #000000
-# 	statusline #777777
-# 	separator  #666666
-# 	# Type             border  background font
-# 	focused_workspace  #008fff #007fff #000000
-# 	active_workspace   #333333 #5f676a #ffffff
-# 	inactive_workspace #333333 #111111 #333333
-# 	urgent_workspace   #aa0000 #990000 #ffffff
-# 	}
-# 
-# 	tray_output HDMI-0
-#         status_command ~/.i3/conky-i3bar
-# }
 bar {
     colors {
 	#Whole color settings
@@ -312,10 +298,10 @@ bar {
 	urgent_workspace   #ff0000 #990000 #007fff
 	}
 
-	tray_output DisplayPort-1
+	tray_output DisplayPort-2
 	font pango: DejaVu Sans Mono Nerd Font 10
 	separator_symbol " | "
-        status_command i3blocks
+        status_command SCRIPT_DIR=~/GITS/i3blocks-contrib i3blocks
 }
 
 # i3 Resurrect Settings
