@@ -4,16 +4,44 @@
 .local/share/PolyMC
 .local/share/lutris
 .local/share/Paradox Interactive
+.paradoxlauncher
 .factorio
 .config/EgoSoft
+.config/r2modmanPlus-local
+.config/unity3d
+.smiteworks
 .wine
 .proton
 .mono
 .mozilla
 BitBurner
+Graftorio2
+.local/share/PrismLauncher
+Zomboid
 
 #Ignore caches
 .local/share/containers
+.local/share/Trash
+.local/share/waydroid
+.local/share/bottles/runners
+.local/share/marble
+.local/share/virtualenv
+.local/share/Anki2
+.local/state
+.local/pipx
+.kube/cache
+.ansible
+.var
+.virtualenvs
+.vscode
+go
+.renpy
+.pylint.d
+.python-eggs
+.python_*
+.nvm
+.npm
+.config/steamtinkerlaunch
 .cache
 .jd
 k3sbackup
@@ -23,3 +51,9 @@ drive
 GITS
 Android
 .gimp-2.8
+PKGBUILDs
+
+#Big Dirs
+Downloads
+Videos
+Saves
