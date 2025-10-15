@@ -4,9 +4,8 @@ set -U budspencer_nogreeting
 set -Ux RESTIC_PASSWORD "{{ (bitwarden "item" "Restic Password").login.password }}"
 set -Ux SOPS_AGE_KEY_FILE "/home/rojikku/.config/sops/age/keys.txt"
 set -Ux ANDROID_SDK_ROOT "$HOME/Android/Sdk"
-{{ end -}}
-
 set -Ux PYENV_ROOT $HOME/.pyenv
+{{ end -}}
 
 # Paths
 fish_add_path $HOME/.jenv/bin
