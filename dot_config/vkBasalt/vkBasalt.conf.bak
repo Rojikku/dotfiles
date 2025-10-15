@@ -7,7 +7,9 @@
 #fxaa   - Fast Approximate Anti-Aliasing
 #smaa   - Enhanced Subpixel Morphological Antialiasing
 #lut    - Color LookUp Table
-effects = cas:tone:vib:smaa
+effects = vib:dls:smaa
+#effects = tone:vib:dls:smaa
+#effects = LUT:cas:tone:vib:dls:smaa
 
 reshadeTexturePath = "/opt/reshade/textures"
 reshadeIncludePath = "/opt/reshade/shaders"
@@ -21,7 +23,7 @@ toggleKey = Home
 #1.0 maximum sharp more artefacts
 #Everything in between is possible
 #negative values sharpen even less, up to -1.0 make a visible difference
-casSharpness = 0.4
+casSharpness = 0.6
 
 #dlsSharpness specifies the amount of sharpening in the Denoised Luma Sharpening shader.
 #Increase to sharpen details within the image.
@@ -98,3 +100,13 @@ smaaCornerRounding = 25
 #lutFile is the path to the LUT file that will be used
 #supported are .CUBE files and .png with width == height * height
 #lutFile = "/path/to/lut"
+
+colorful="/opt/reshade/shaders/Colourfulness.fx"
+denoise="/opt/reshade/shaders/Denoise.fx"
+asharp="/opt/reshade/shaders/AdaptiveSharpen.fx"
+lsharp="/opt/reshade/shaders/LumaSharpen.fx"
+tone="/opt/reshade/shaders/Tonemap.fx"
+vib="/opt/reshade/shaders/Vibrance.fx"
+mxao="/opt/reshade/shaders/MXAO.fx"
+clarity="/opt/reshade/shaders/Clarity.fx"
+LUT="/opt/reshade/shaders/LUT.fx"

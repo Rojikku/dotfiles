@@ -5,11 +5,21 @@
 #
 #     https://vivien.github.io/i3blocks
 
-[user]
-label=☻ 
-command=echo "$USER"
-interval=once
-color=#268BD2
+[k8s-nodes]
+command=~/.i3scripts/k8s-nodes
+label=k8s 
+interval=10
+format=json
+markup=pango
+color="#268BD2"
+
+[flux-count]
+command=~/.i3scripts/flux-count
+label=flux 
+interval=10
+format=json
+markup=pango
+color="#268BD2"
 
 [hostname]
 label=♥ 
@@ -18,32 +28,42 @@ interval=once
 color=#6F3BFF
 
 [cpu]
+command=$SCRIPT_DIR/cpu_usage/cpu_usage
 label=■ 
-command=~/.i3scripts/cpu_usage
-interval=10
-color=#00A9B5
+interval=5
+COLOR_NORMAL="#00A9B5"
 T_WARN=70
 T_CRIT=95
 
-[memory]
-label=RAM 
-command=~/.i3scripts/memory
+[cpu_temp]
+label=■ 
+command=$SCRIPT_DIR/temperature/temperature
 interval=30
-color=#f12711
+color="#00A9B5"
+SENSOR_CHIP=nct6798-isa-0290
+
+[memory]
+command=$SCRIPT_DIR/memory/memory
+label=RAM 
+interval=30
+color="#f12711"
+
+[gpu_load]
+command=$SCRIPT_DIR/gpu-load/gpu-load
+label=G 
+interval=10
+#min_width=GPU 100% 100% 100% 100%
+color=#33CC99
+GPU_BRAND=AMD
+T_WARN=70
+T_CRIT=90
 
 [gpu_temp]
-label=GPU 
-command=~/.i3scripts/temperature
+label=G 
+command=$SCRIPT_DIR/temperature/temperature
 interval=30
 color=#33CC99
 SENSOR_CHIP=amdgpu-pci-1100
-
-[cpu_temp]
-label=CPU 
-command=~/.i3scripts/temperature
-interval=30
-color=#33CC99
-SENSOR_CHIP=nct6798-isa-0290
 
 [uptime]
 label= 
@@ -52,16 +72,30 @@ interval=60
 color=#DC322F
 
 [volume]
-command=~/.i3scripts/volume-pulseaudio
+command=$SCRIPT_DIR/volume-pipewire/volume-pipewire
 interval=persist
-DEFAULT_COLOR=#268BD2
-MUTED_COLOR=#00FF00
+DEFAULT_COLOR="#268BD2"
+MUTED_COLOR="#FF0000"
 LONG_FORMAT="${SYMB} ${VOL}%"
 AUDIO_MED_THRESH=40
-signal=1
 SUBSCRIBE=1
 
+[dunst]
+command=$SCRIPT_DIR/dunst/dunst
+interval=once
+format=json
+markup=pango
+
+[dunst-pl]
+command=~/.i3scripts/dunst-pl
+interval=once
+format=json
+markup=pango
+
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+command=$SCRIPT_DIR/time/time
+STRFTIME_FORMAT=%Y-%m-%d %H:%M:%S
 interval=1
+TZDONES=$DEFAULT_TZ
+TZ_LABELS=EST
 color=#2FDC57
