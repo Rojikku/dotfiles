@@ -1,0 +1,11 @@
+[Unit]
+Description=PlayerCTL Volume Control Daemon
+After=network.target pulseaudio.service
+
+[Service]
+ExecStart=/home/rojikku/GITS/VCMusicCTL/main.py
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
