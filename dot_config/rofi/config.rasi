@@ -1,0 +1,12 @@
+configuration {
+	modes: "drun,calc,window,ssh,run";
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+@theme "/usr/share/rofi/themes/fullscreen-preview.rasi"
