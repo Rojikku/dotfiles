@@ -19,16 +19,11 @@ exec --no-startup-id conky
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 #exec --no-startup-id xautolock -locker 'i3lock -i ~/Pictures/Lock.png -c 000000' -time 10 -notify 30
 
-# Icons
-exec --no-startup-id xfce4-power-manager
-# exec --no-startup-id pasystray
-# exec --no-startup-id uim-xim
-# exec --no-startup-id uim-toolbar-gtk-systray
-
 # Background
 exec --no-startup-id "feh --randomize --bg-fill ~/Pictures/Watched/*"
 
-# Networking Tray Icons
+# Tray Icons
+exec --no-startup-id xfce4-power-manager
 exec --no-startup-id firewall-applet
 exec --no-startup-id nm-applet
 
@@ -38,16 +33,16 @@ exec --no-startup-id nm-applet
 bindsym $mod+z workspace back_and_forth
 
 
-#Settings
+# Settings
 workspace_layout tabbed
 new_window pixel
+
+# Window Configs
 for_window [class="Civ5XP"] floating disable
-#  for_window [class="EVE"] floating enable
 for_window [class="pobfrontend"] floating enable
-#  for_window [class="EVE"] fullscreen disable
 for_window [class="Burrito"] floating enable
 
-#Workspace Program Association
+# Workspace Program Association
 assign [class="Steam"] 2
 assign [class="Burrito"] 2
 assign [class="Liferea"] 3
@@ -58,11 +53,12 @@ assign [class="wineserver"] 0
 assign [class="discord"] Discord
 assign [class="electron"] Discord
 
+# Monitor Vars
 set $left DisplayPort-2
 set $right DisplayPort-0
 set $center DisplayPort-1
 
-#Monitor Binds
+# Monitor Binds
 workspace 1 output $left
 workspace 2 output $center
 workspace 3 output $center
@@ -76,12 +72,11 @@ bindsym $c+$mod+p exec "puush -c -w"
 bindsym $mod+Shift+s exec "xfce4-screenshooter -c -r"
 bindsym $mod+$c+Shift+s exec "xfce4-screenshooter -c -w"
 
-#Media Custom Hotkeys
-bindsym $mod+p exec "mpc toggle"
-
 # Lock screen
 bindsym $alt+$c+l exec "keychain --clear; i3lock -i ~/Pictures/Lock.png -e -c 000000"
-#Workspace relocation
+
+
+# Workspace relocation
 bindsym $mod+x move workspace to output left
 bindsym $mod+c move workspace to output right
 
@@ -90,7 +85,7 @@ bindsym $mod+Right exec $wk next go
 bindsym $mod+Up exec $wk up go
 bindsym $mod+Down exec $wk down go
 
-#Scratchpad
+# Scratchpad
 bindsym $mod+Shift+grave move scratchpad
 bindsym $mod+grave scratchpad show
 
@@ -132,7 +127,7 @@ bindsym $mod+Shift+q kill
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 #Fastest dmenu
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+j focus left
