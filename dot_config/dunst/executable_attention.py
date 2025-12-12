@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-from os import system #Run command for demands_attention
-from sys import argv #Import arguments from dunst
-import re #Regex Support
+from os import system # Run command for demands_attention
+from sys import argv # Import arguments from dunst
+import re # Regex Support
+import psutil # Check processes
 
 # Variables
 options = argv
@@ -9,6 +10,7 @@ appname = argv[1]
 summary = argv[2]
 body = argv[3]
 command = "wmctrl -r {} -b add,demands_attention".format(appname) # Set demands attention status on calling window
+
 
 # Debug
 # print("Appname: {}\nSummary: {}\nBody: {}".format(appname, summary, body))
@@ -55,7 +57,19 @@ def discord():
         print("Notifying for: {}".format(summary))
         system(command)
 
+def floorp():
+    if "i3lock" not in (p.name() for p in psutil.process_iter()):
+        return
+    sender = summary.replace("You received a private message from ", "")
+    fwd = 'kdeconnect-cli -n "Pixel 8 Pro" --ping-msg "{}"'
+    print("Forwarding floorp notif for: {}".format(summary))
+    fwd = fwd.format(sender + ": " + body[:30])
+    system(fwd)
+    # system(command) # This does not highlight correct window
+
 if appname == 'discord':
     discord()
+if appname == 'Floorp':
+    floorp()
 else:
     print("Error: No applicable setup!")
