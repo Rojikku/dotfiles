@@ -55,7 +55,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 10x10
+    offset = (10, 10)
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -455,6 +455,10 @@
 
 [discord]
 	appname = discord
+	script = .config/dunst/attention.py
+
+[floorp]
+	appname = Floorp
 	script = .config/dunst/attention.py
 
 # Disable the transient hint so that idle_threshold cannot be bypassed from the
