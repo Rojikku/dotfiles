@@ -5,6 +5,7 @@ SETUVAR --export EDITOR:vim
 SETUVAR --export --path PATH:/home/rojikku/\x2ejenv/bin\x1e/home/rojikku/\x2ejenv/shims\x1e/home/rojikku/\x2ejenv/shims\x1e/home/rojikku/\x2envm/versions/node/v16\x2e13\x2e1/bin\x1e/home/rojikku/\x2elocal/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/sbin\x1e/var/lib/flatpak/exports/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl
 SETUVAR --export PYENV_ROOT:/home/rojikku/\x2epyenv
 SETUVAR --export SOPS_AGE_KEY_FILE:/home/rojikku/\x2econfig/sops/age/keys\x2etxt
+SETUVAR --export UV_LINK_MODE:clone
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
