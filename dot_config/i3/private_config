@@ -26,6 +26,7 @@ exec --no-startup-id "feh --randomize --bg-fill ~/Pictures/Watched/*"
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id firewall-applet
 exec --no-startup-id nm-applet
+exec --no-startup-id kdeconnect-indicator
 
 
 # Custom keybinds
@@ -38,6 +39,18 @@ workspace_layout tabbed
 new_window pixel
 
 # Window Configs
+for_window [window_role="About"] floating enable
+for_window [window_role="Organizer"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="page-info"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="toolbox"] floating enable
+for_window [window_role="webconsole"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [title="Preferences$"] floating enable
 for_window [class="Civ5XP"] floating disable
 for_window [class="pobfrontend"] floating enable
 for_window [class="Burrito"] floating enable
@@ -73,7 +86,7 @@ bindsym $mod+Shift+s exec "xfce4-screenshooter -c -r"
 bindsym $mod+$c+Shift+s exec "xfce4-screenshooter -c -w"
 
 # Lock screen
-bindsym $alt+$c+l exec "keychain --clear; i3lock -i ~/Pictures/Lock.png -e -c 000000"
+bindsym $alt+$c+l exec "keychain --clear; ~/Scripts/i3sleep.sh -e -c 000000"
 
 
 # Workspace relocation
