@@ -52,7 +52,7 @@ Zomboid
 .config/Code/CachedData
 .config/VirtualBox
 .android/avd
-.floorp/*.defaul*/storage
+.floorp/*.*/storage
 .ansible
 .var
 .config/discord/0.*
