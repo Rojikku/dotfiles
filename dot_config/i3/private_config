@@ -29,6 +29,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id kdeconnect-indicator
 
 
+# Scripts
+exec --no-startup-id ~/Scripts/flatpak-update.sh
+
 # Custom keybinds
 #Move to last workspace
 bindsym $mod+z workspace back_and_forth
