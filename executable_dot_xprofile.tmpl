@@ -1,7 +1,9 @@
 #!/bin/sh
+export QT_QPA_PLATFORMTHEME=gtk3
 export GTK_IM_MODULE='uim'
 export QT_IM_MODULE='uim'
 export XMODIFIERS='@im=uim'
+export DIFFPROG='meld'
 {{- if (and (eq .chezmoi.os "linux") (not .codespaces)) }}
 export GOOGLE_API_KEY='{{ (bitwardenFields "item" "Google OAUTH").GOOGLE_API_KEY.value }}'
 export GOOGLE_DEFAULT_CLIENT_ID='{{ (bitwardenFields "item" "Google OAUTH").GOOGLE_DEFAULT_CLIENT_ID.value }}'
@@ -9,10 +11,11 @@ export GOOGLE_DEFAULT_CLIENT_SECRET='{{ (bitwardenFields "item" "Google OAUTH").
 export STEAM_FORCE_DESKTOPUI_SCALING=1.5
 {{- end -}}
 {{- if (and (eq .chezmoi.os "linux") (not .codespaces) (eq .chezmoi.hostname "Sintax")) }}
+sleep 1
 xrandr --output DisplayPort-1 --primary --mode 2560x1440 --pos 2560x0 --rate 144 --rotate normal \
-        --output DisplayPort-0 --mode 2560x1440 --pos 5120x0 --rate 144 --rotate normal \
-        --output DisplayPort-2 --mode 2560x1440 --pos 0x0 --rate 144 --rotate normal \
-        --output HDMI-A-0 --off
+	--output DisplayPort-0 --mode 2560x1440 --pos 5120x0 --rate 144 --rotate normal \
+	--output DisplayPort-2 --mode 2560x1440 --pos 0x0 --rate 144 --rotate normal \
+	--output HDMI-A-0 --off
 amixer -D pulse sset Master 60%
-xset s off -dpms
+#xset s off -dpms
 {{- end }}
