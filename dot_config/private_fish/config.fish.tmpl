@@ -9,6 +9,7 @@ set -Ux PYENV_ROOT $HOME/.pyenv
 
 # Paths
 fish_add_path $HOME/.jenv/bin
+fish_add_path $HOME/bin
 fish_add_path $PYENV_ROOT/bin
 
 # Aliases
@@ -16,9 +17,11 @@ fish_add_path $PYENV_ROOT/bin
 alias fixmirrors="sudo reflector -c US,CA --connection-timeout 4 --download-timeout 3 --protocol https,rsync --age 12 --sort rate --number 350 --fastest 50 --threads 32 --save /etc/pacman.d/mirrorlist;sudo rm -f /etc/pacman.d/mirrorlist.pacnew"
 {{- end }}
 alias k="kubectl"
+alias update="tldr --update; sudo pacman -Syu --noconfirm && shutdown now"
+alias webui="pushd ~/open-webui && DATA_DIR=~/.open-webui ENABLE_PERSISTENT_CONFIG=False ENABLE_SIGNUP=True uvx --python 3.12 open-webui@latest serve --port 8080 ; popd"
+alias npm="echo 'Use bun'; bun"
 
 # Load Stuff
 {{- if (and (eq .chezmoi.os "linux") (not .codespaces)) }}
 bass source /usr/share/nvm/init-nvm.sh
-status --is-interactive; and jenv init - | source
 {{- end }}
