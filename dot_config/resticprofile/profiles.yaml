@@ -15,7 +15,9 @@ default:
     schedule-priority: background
     schedule-lock-mode: default
     schedule-lock-wait: 15m30s
-  
+    run-after: "pkill -SIGRTMIN+1 i3blocks"
+    run-after-fail: "pkill -SIGRTMIN+1 i3blocks"
+
   retention:
     after-backup: true
     before-backup: false
