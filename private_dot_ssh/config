@@ -3,8 +3,13 @@ Host localhost
 Host aur.archlinux.org
 	IdentityFile ~/.ssh/aur
 	User aur
-Host nas
-	Hostname 192.168.4.56
-	IdentityFile ~/.ssh/NAS/ed25519
+Host NAS
+	Hostname 192.168.1.5
+	IdentityFile ~/.ssh/NAS/id_ed25519
 	User k8s
 	Port 2212
+Host nas
+	Hostname nas
+	IdentityFile ~/.ssh/gitea/id_ed25519
+	User git
+	Port 3122

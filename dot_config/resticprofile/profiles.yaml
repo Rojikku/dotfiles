@@ -1,7 +1,7 @@
 version: "1"
 
 default:
-  repository: "sftp:k8s@nas:/Backup/b/Sintax"
+  repository: "sftp:k8s@NAS:/Backup/b/Sintax"
   password-file: "{{ .ConfigDir }}/{{ .Profile.Name }}-key"
 
   backup:
