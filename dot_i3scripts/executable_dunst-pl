@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+"""
+A do-not-disturb button for muting Dunst notifications in i3 using i3blocks
+
+Mute is handled using the `dunstctl` command.
+"""
+
+import os
+import subprocess as sp
+import json
+
+def mute_toggle():
+    '''Toggle dunst notifications'''
+    if percent() > 0:
+        sp.run(["dunstctl", "set-paused", "false"], check=True)
+    else:
+        sp.run(["dunstctl", "set-pause-level", "10"], check=True)
+
+def clicked():
+    '''Returns True if the button was clicked'''
+    button = os.environ.get("BLOCK_BUTTON", None)
+    return bool(button)
+
+def percent():
+    '''Returns int for dunst pause level'''
+    output = sp.check_output(('dunstctl', 'get-pause-level'))
+    return int(output.strip().decode("UTF-8"))
+
+if clicked():
+    # toggle button click to turn mute on and off
+    mute_toggle()
+
+# if percent() > 0:
+RTN = {"full_text":"<span font='Font Awesome 5 Free Solid' color='#BE616E'>{}</span>".format(percent())}
+
+print(json.dumps(RTN))

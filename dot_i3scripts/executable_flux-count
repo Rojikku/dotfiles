@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""
+Count of flux hrs and how many are ready
+"""
+
+import os
+import sys
+import subprocess as sp
+import json
+
+
+def parse_args():
+	args = {
+		'warn_threshold': 80,
+		'crit_threshold': 90,
+		'warn_color': '#d6af4e',
+		'crit_color': '#d64e4e',
+        'color': '#268BD2',
+		'format': '{used:.1f}G/{total:.1f}G ({perc_used:.1f}%) -  {avail:.1f}G'
+	}
+
+	try:
+		for arg in sys.argv[1:]:
+			key, value = arg.split('=')
+			args[key] = int(value) if value.isdigit() else value
+	except (KeyError, ValueError):
+		# ValuError in case user does something weird
+		pass
+
+	return args
+
+args = parse_args()
+
+def count_hrs():
+    '''Count flux hrs'''
+    count = sp.run(["flux", "get", "hr", "-A", "--no-header", ], check=True, capture_output=True)
+    output = sp.run(["wc", "-l"], input=count.stdout, capture_output=True)
+    return output.stdout.decode("UTF-8").strip()
+
+def ready_hrs():
+    '''Count flux hrs that are ready'''
+    ready = sp.run(["flux", "get", "hr", "-A", "--no-header", "--status-selector", "ready=true" ], check=True, capture_output=True)
+    output = sp.run(["wc", "-l"], input=ready.stdout, capture_output=True)
+    return output.stdout.decode("UTF-8").strip()
+
+ready = ready_hrs()
+count = count_hrs()
+
+if ready == count:
+    color = args['color']
+else:
+    color = args['warn_color']
+
+RTN = {"full_text":"<span font='Font Awesome 5 Free Solid' color='{}'>{}/{}</span>".format(color,ready,count)}
+
+print(json.dumps(RTN))
