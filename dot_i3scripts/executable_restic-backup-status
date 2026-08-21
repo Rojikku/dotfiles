@@ -1,26 +1,57 @@
 #!/usr/bin/env bash
 
 SERVICE="resticprofile-backup@profile-default.service"
+PROFILE="default"
 
-# Check systemd result properties for the service
+# --- State Functions ---
+output_state() {
+    local color="$1"
+    local urgent="$2"
+    local text="<b> 󰁌 </b>"
+
+    echo "<span color='$color'>$text</span>"
+    echo "<span color='$color'>$text</span>"
+    echo "$color"
+
+    [ "$urgent" = "true" ] && exit 33
+}
+
+state_green()  { output_state "#2FDC57" false; }
+state_yellow() { output_state "#F1C40F" false; }
+state_orange() { output_state "#E67E22" false; }
+state_red()    { output_state "#FF0000" true; }
+
+# --- Logic Checks ---
+
+# 1. Check if service explicitly failed
 STATUS=$(systemctl --user is-failed "$SERVICE" 2>/dev/null)
 RESULT=$(systemctl --user show "$SERVICE" --property=Result --value 2>/dev/null)
-EXEC_STATUS=$(systemctl --user show "$SERVICE" --property=ExecMainStatus --value 2>/dev/null)
 
-if [ "$STATUS" = "failed" ] || [ "$RESULT" = "failed" ] || [ "$EXEC_STATUS" != "0" -a -n "$EXEC_STATUS" -a "$EXEC_STATUS" != "succeeded" ]; then
-    # 1. Bright Red: Explicit failure
-    echo "<span color='#FF0000'><b> 󰁌 </b></span>"
-    echo "<span color='#FF0000'><b> 󰁌 </b></span>"
-    echo "#FF0000"
-    exit 33
-elif [ "$RESULT" = "success" ] && [ "$EXEC_STATUS" = "0" ]; then
-    # 2. Green: Explicitly succeeded on its last run
-    echo "<span color='#2FDC57'><b> 󰁌 </b></span>"
-    echo "<span color='#2FDC57'><b> 󰁌 </b></span>"
-    echo "#2FDC57"
+if [ "$STATUS" = "failed" ] || [ "$RESULT" = "failed" ]; then
+    state_red
+fi
+
+# 2. Check last snapshot timestamp from restic
+LAST_SNAPSHOT_TIME=$(resticprofile -q -n "$PROFILE" snapshots --json latest 2>/dev/null | jq -r '.[0].time' 2>/dev/null)
+
+if [ -n "$LAST_SNAPSHOT_TIME" ] && [ "$LAST_SNAPSHOT_TIME" != "null" ]; then
+    SNAPSHOT_EPOCH=$(date -d "$LAST_SNAPSHOT_TIME" +%s 2>/dev/null)
+    CURRENT_EPOCH=$(date +%s)
+    MAX_AGE_SECONDS=$((26 * 3600)) # 26 hours threshold
+
+    AGE=$((CURRENT_EPOCH - SNAPSHOT_EPOCH))
+
+    if [ "$AGE" -gt "$MAX_AGE_SECONDS" ]; then
+        SERVICE_SUBSTATE=$(systemctl --user show "$SERVICE" --property=SubState --value 2>/dev/null)
+
+        if [ "$SERVICE_SUBSTATE" = "dead" ] || [ "$SERVICE_SUBSTATE" = "waiting" ]; then
+            state_yellow
+        else
+            state_red
+        fi
+    else
+        state_green
+    fi
 else
-    # 3. Light Yellow: Idle, waiting, or hasn't recorded a clean run yet
-    echo "<span color='#F1C40F'><b> 󰁌 </b></span>"
-    echo "<span color='#F1C40F'><b> 󰁌 </b></span>"
-    echo "#F1C40F"
+    state_orange
 fi
