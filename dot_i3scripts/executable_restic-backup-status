@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+SERVICE="resticprofile-backup@profile-default.service"
+
+# Check systemd result properties for the service
+STATUS=$(systemctl --user is-failed "$SERVICE" 2>/dev/null)
+RESULT=$(systemctl --user show "$SERVICE" --property=Result --value 2>/dev/null)
+EXEC_STATUS=$(systemctl --user show "$SERVICE" --property=ExecMainStatus --value 2>/dev/null)
+
+if [ "$STATUS" = "failed" ] || [ "$RESULT" = "failed" ] || [ "$EXEC_STATUS" != "0" -a -n "$EXEC_STATUS" -a "$EXEC_STATUS" != "succeeded" ]; then
+    # 1. Bright Red: Explicit failure
+    echo "<span color='#FF0000'><b> 󰁌 </b></span>"
+    echo "<span color='#FF0000'><b> 󰁌 </b></span>"
+    echo "#FF0000"
+    exit 33
+elif [ "$RESULT" = "success" ] && [ "$EXEC_STATUS" = "0" ]; then
+    # 2. Green: Explicitly succeeded on its last run
+    echo "<span color='#2FDC57'><b> 󰁌 </b></span>"
+    echo "<span color='#2FDC57'><b> 󰁌 </b></span>"
+    echo "#2FDC57"
+else
+    # 3. Light Yellow: Idle, waiting, or hasn't recorded a clean run yet
+    echo "<span color='#F1C40F'><b> 󰁌 </b></span>"
+    echo "<span color='#F1C40F'><b> 󰁌 </b></span>"
+    echo "#F1C40F"
+fi

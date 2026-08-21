@@ -92,6 +92,12 @@ interval=once
 format=json
 markup=pango
 
+[restic-backup]
+command=~/.i3scripts/restic-backup-status
+interval=600
+markup=pango
+signal=1
+
 [time]
 command=$SCRIPT_DIR/time/time
 STRFTIME_FORMAT=%Y-%m-%d %H:%M:%S
