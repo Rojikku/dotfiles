@@ -1,7 +1,6 @@
 # Env Variables
 set -U budspencer_nogreeting
 {{- if (and (eq .chezmoi.os "linux") (not .codespaces)) }}
-set -Ux RESTIC_PASSWORD "{{ (bitwarden "item" "Restic Password").login.password }}"
 set -Ux SOPS_AGE_KEY_FILE "/home/rojikku/.config/sops/age/keys.txt"
 set -Ux ANDROID_SDK_ROOT "$HOME/Android/Sdk"
 set -Ux PYENV_ROOT $HOME/.pyenv
