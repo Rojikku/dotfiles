@@ -23,9 +23,9 @@ default:
     before-backup: false
     compact: false
     keep-within: 1d
-    keep-hourly: 36
-    keep-daily: 14
-    keep-weekly: 16
+    keep-hourly: 30
+    keep-daily: 10
+    keep-weekly: 12
     keep-monthly: 9
-    keep-yearly: 4
+    keep-yearly: 2
     prune: true
