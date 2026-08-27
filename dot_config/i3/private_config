@@ -310,7 +310,7 @@ bar {
 	}
 
 	tray_output DisplayPort-2
-	font pango: DejaVu Sans Mono Nerd Font 10
+	font pango: Noto SanS 10
 	separator_symbol " | "
         status_command SCRIPT_DIR=~/GITS/i3blocks-contrib i3blocks
 }
