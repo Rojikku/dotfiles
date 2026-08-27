@@ -10,8 +10,9 @@ draw_borders no
 draw_graph_borders yes
 draw_outline no
 draw_shades no
+#gap_x 3700
 gap_x 3000
-gap_y 15 
+gap_y 30
 maximum_width 860
 max_port_monitor_connections 64
 max_specials 512
@@ -20,6 +21,7 @@ minimum_size 330 10
 net_avg_samples 2
 no_buffers yes
 out_to_console no
+out_to_wayland yes
 own_window_class Conky
 own_window_argb_visual true
 own_window_argb_value 200
@@ -27,6 +29,7 @@ own_window_colour black
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 own_window_transparent no
 own_window_type override
+#own_window_type desktop
 own_window yes
 stippled_borders 2
 update_interval 1
