@@ -4,6 +4,10 @@
 	signingKey = 7C1E63EED4DAE3ADE102C9E75CF12FC89E244966
 [core]
 	editor = code --wait
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 [init]
 	defaultBranch = main
 [commit]
@@ -15,3 +19,11 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[alias]
+	grab = merge --no-commit --no-ff -X theirs
+	last = log -1 HEAD
+	unstage = reset HEAD --
+	clear = "stash push -- "
+	uncommit = reset HEAD~1 --soft
+[rerere]
+	enabled = true
