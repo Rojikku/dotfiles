@@ -17,7 +17,7 @@ alias fixmirrors="sudo reflector -c US,CA --connection-timeout 4 --download-time
 {{- end }}
 alias k="kubectl"
 alias update="tldr --update; sudo pacman -Syu --noconfirm && shutdown now"
-alias webui="pushd ~/open-webui && DATA_DIR=~/.open-webui ENABLE_PERSISTENT_CONFIG=False ENABLE_SIGNUP=True uvx --python 3.12 open-webui@latest serve --port 8080 ; popd"
+alias webui="pushd ~/.open-webui && DATA_DIR=~/.open-webui ENABLE_PERSISTENT_CONFIG=False ENABLE_SIGNUP=True uvx --python 3.12 open-webui@latest serve --port 8080 ; popd"
 alias npm="echo 'Use bun'; bun"
 
 # Load Stuff
