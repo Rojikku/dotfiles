@@ -23,4 +23,6 @@ alias npm="echo 'Use bun'; bun"
 # Load Stuff
 {{- if (and (eq .chezmoi.os "linux") (not .codespaces)) }}
 bass source /usr/share/nvm/init-nvm.sh
+oh-my-posh init fish --config ~/.config/fish/themes/blueish.omp.json | source
 {{- end }}
+set PATH $PATH /home/rojikku/.local/bin
