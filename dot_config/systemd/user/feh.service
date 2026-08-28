@@ -1,6 +1,5 @@
 [Unit]
 Description=Random wallpaper with feh
-After=graphical-session.target
 
 [Service]
 Type=oneshot
